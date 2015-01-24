@@ -4,6 +4,9 @@ if (Meteor.isServer) {
 
   var topic_1 = 'banana';
   var topic_2 = 'apple';
+
+  Meteor.topic_1 = topic_1;
+  Meteor.topic_2 = topic_2;
   
   // only expose subset of db
   Meteor.publish("tweets_1", function () {
@@ -54,12 +57,12 @@ if (Meteor.isServer) {
         
       },
       function(e) {
-        console.log('twitterget bind failure');
+        console.log('twitterget 1 bind failure');
       }
     ));
   },
   function(e){
-    console.log('setInterval bind failure');
+    console.log('setInterval 1 bind failure');
   }), 5000);
 
   //access topic 2 tweets
@@ -97,16 +100,16 @@ if (Meteor.isServer) {
           
         },
         function(e) {
-          console.log('twitterget bind failure');
+          console.log('twitterget 2 bind failure');
         }
       ));
     },
     function(e){
-      console.log('setInterval bind failure');
+      console.log('setInterval 2 bind failure');
     }), 5000);
   },
   function(e) {
-    console.log('set timeout error');
+    console.log('set timeout 2 error');
   }), 2500);
 
 }
