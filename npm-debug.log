@@ -1,0 +1,95 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'packages.json' ]
+2 info using npm@1.4.23
+3 info using node@v0.10.30
+4 verbose node symlink /usr/local/bin/node
+5 verbose cache add [ 'packages.json', null ]
+6 verbose cache add name=undefined spec="packages.json" args=["packages.json",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'packages.json',
+7 verbose parsed url   path: 'packages.json',
+7 verbose parsed url   href: 'packages.json' }
+8 silly lockFile 1a70e61c-packages-json packages.json
+9 verbose lock packages.json /Users/muneer/.npm/1a70e61c-packages-json.lock
+10 verbose chmod /var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz 644
+11 verbose tar unpack /var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz
+12 silly lockFile 47ebf8fd-05271769710816443-tmp-tgz-unpack tar:///var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz-unpack
+13 verbose lock tar:///var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz-unpack /Users/muneer/.npm/47ebf8fd-05271769710816443-tmp-tgz-unpack.lock
+14 silly lockFile ed3e7370-3857-0-05271769710816443-tmp-tgz tar:///var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz
+15 verbose lock tar:///var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz /Users/muneer/.npm/ed3e7370-3857-0-05271769710816443-tmp-tgz.lock
+16 silly gunzTarPerm modes [ '755', '644' ]
+17 error not a package /var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz
+18 silly lockFile 47ebf8fd-05271769710816443-tmp-tgz-unpack tar:///var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz-unpack
+19 silly lockFile 47ebf8fd-05271769710816443-tmp-tgz-unpack tar:///var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz-unpack
+20 silly lockFile ed3e7370-3857-0-05271769710816443-tmp-tgz tar:///var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz
+21 silly lockFile ed3e7370-3857-0-05271769710816443-tmp-tgz tar:///var/folders/tw/lbq2y8k17yd6wx7ld_fj7mtw0000gn/T/npm-45951-37Wh2H44/1422105583857-0.05271769710816443/tmp.tgz
+22 silly lockFile 1a70e61c-packages-json packages.json
+23 silly lockFile 1a70e61c-packages-json packages.json
+24 verbose addNamed [ 'packages.json', '' ]
+25 verbose addNamed [ null, '*' ]
+26 silly lockFile f92fe447-packages-json packages.json@
+27 verbose lock packages.json@ /Users/muneer/.npm/f92fe447-packages-json.lock
+28 silly addNameRange { name: 'packages.json', range: '*', hasData: false }
+29 verbose request where is /packages.json
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id 5df3b12e57c07784
+32 verbose url raw /packages.json
+33 verbose url resolving [ 'https://registry.npmjs.org/', './packages.json' ]
+34 verbose url resolved https://registry.npmjs.org/packages.json
+35 verbose request where is https://registry.npmjs.org/packages.json
+36 info trying registry request attempt 1 at 15:19:43
+37 http GET https://registry.npmjs.org/packages.json
+38 http 404 https://registry.npmjs.org/packages.json
+39 verbose headers { date: 'Sat, 24 Jan 2015 13:19:44 GMT',
+39 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+39 verbose headers   'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=0',
+39 verbose headers   'content-length': '52',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   age: '0',
+39 verbose headers   'x-served-by': 'cache-lcy1124-LCY',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1422105584.248033,VS0,VE617',
+39 verbose headers   'keep-alive': 'timeout=10, max=50',
+39 verbose headers   connection: 'Keep-Alive' }
+40 silly registry.get cb [ 404,
+40 silly registry.get   { date: 'Sat, 24 Jan 2015 13:19:44 GMT',
+40 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+40 silly registry.get     'content-type': 'application/json',
+40 silly registry.get     'cache-control': 'max-age=0',
+40 silly registry.get     'content-length': '52',
+40 silly registry.get     'accept-ranges': 'bytes',
+40 silly registry.get     via: '1.1 varnish',
+40 silly registry.get     age: '0',
+40 silly registry.get     'x-served-by': 'cache-lcy1124-LCY',
+40 silly registry.get     'x-cache': 'MISS',
+40 silly registry.get     'x-cache-hits': '0',
+40 silly registry.get     'x-timer': 'S1422105584.248033,VS0,VE617',
+40 silly registry.get     'keep-alive': 'timeout=10, max=50',
+40 silly registry.get     connection: 'Keep-Alive' } ]
+41 silly lockFile f92fe447-packages-json packages.json@
+42 silly lockFile f92fe447-packages-json packages.json@
+43 error 404 404 Not Found: packages.json
+43 error 404
+43 error 404 'packages.json' is not in the npm registry.
+43 error 404 You should bug the author to publish it
+43 error 404
+43 error 404 Note that you can also install from a
+43 error 404 tarball, folder, or http url, or git url.
+44 error System Darwin 14.0.0
+45 error command "node" "/usr/local/bin/npm" "install" "packages.json"
+46 error cwd /Users/muneer/workspace/yalla
+47 error node -v v0.10.30
+48 error npm -v 1.4.23
+49 error code E404
+50 verbose exit [ 1, true ]
