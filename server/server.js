@@ -12,9 +12,11 @@ if (Meteor.isServer) {
   });
   Meteor.startup(function () {
     // code to run on server at startup
+    var speak = Meteor.npmRequire('speakeasy-nlp');
+    var r1 = speak.sentiment.analyze("cats are dumb");
+    console.log("-- Sentiment --");
+    console.log(r1);
   });
-
-  var twitter = new TwitMaker(Meteor.__keys);
 
   // async callbacks to be wrapped in Meteor.bindEnvironment()
     twitter.get('search/tweets', { q: 'banana since:2011-11-11', lang: en, count: 3 }, Meteor.bindEnvironment(

@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "speakeasy-nlp": {
+      "version": "0.2.11",
+      "dependencies": {
+        "levenshtein": {
+          "version": "1.0.5"
+        }
+      }
+    }
+  }
+}
