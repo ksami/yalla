@@ -2,6 +2,7 @@
   <title>yalla - The twitter fight</title>
   <link rel="icon" href="/image/icon.png" type="image/png" />
 </head>
+
 <body>
   <button>debug</button>
   <div class="backdrop">
@@ -11,38 +12,24 @@
       <div id="player_2" class="player right flip idle item"></div>
     </div>
   </div>
-<!--   <div class="container">
-    <div id="oponent1">
-      {{> gameTemplate1}}
-    </div>
-    <div id="oponent2">
-      {{> gameTemplate2}}
-    </div>
-  </div> -->
+  <!-- {{> gameTemplate}} -->
 </body>
 
-<template name="gameTemplate1">
-  <!-- gauge for health tweet bar -->
-  <div class="gauge">
-    <h1>{{tweetCounts}}</h1>
+<template name="gameTemplate">
+  <div class="gauge" id="gauge1">
+    <h1>{{tweetCounts1}}</h1>
   </div>
-  <div class="topic">
-    <h1>{{topicName}}</h1>
+  <div class="gauge" id="gauge2">
+    <h1>{{tweetCounts2}}</h1>
   </div>
-  <!-- character -->
-  <div class="character">
+  <div class="topic" id="topic1">
+    <h1>{{topicName1}}</h1>
   </div>
-</template>
-
-<template name="gameTemplate2">
-  <!-- gauge for health tweet bar -->
-  <div class="gauge">
-    <h1>{{tweetCounts}}</h1>
+  <div class="topic" id="topic2">
+    <h1>{{topicName2}}</h1>
   </div>
-  <div class="topic">
-    <h1>{{topicName}}</h1>
-  </div>
-  <!-- character -->
-  <div class="character">
-  </div>
+  <p>newTweets1: {{newTweets1}}</p>
+  <p>newTweets2: {{newTweets2}}</p>
+  <p>newTweets1_count: {{newTweets1_count}}</p>
+  <p>newTweets2_count: {{newTweets2_count}}</p>
 </template>

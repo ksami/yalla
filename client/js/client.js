@@ -136,4 +136,93 @@ if(Meteor.isClient) {
 //     passwordSignupFields: "USERNAME_ONLY"
 //   });
 // }
+if(Meteor.isClient) {
+  var _db_tweets_1 = Meteor._db_tweets_1;
+  var _db_tweets_2 = Meteor._db_tweets_2;
+  Meteor.subscribe("tweets_1");
+  Meteor.subscribe("tweets_2");
 
+  var topic_1 = 'mac';
+  var topic_2 = 'windows';
+
+  Template.gameTemplate.helpers({
+    tweetCounts1 : function() {
+      return _db_tweets_1.find().count();
+    }, 
+    topicName1 : function() {
+      return topic_1;
+    },
+    tweetCounts2 : function() {
+      return _db_tweets_2.find().count();
+    }, 
+    topicName2 : function() {
+      return topic_2;
+    },
+    newTweets1: function(){ return Session.get('newTweets1'); },
+    newTweets2: function(){ return Session.get('newTweets2'); },
+    newTweets1_count: function(){ return Session.get('newTweets1_count'); },
+    newTweets2_count: function(){ return Session.get('newTweets2_count'); }
+  });
+
+
+  // init Session.newTweets
+  Session.set('newTweets1_temp', []);
+  Session.set('newTweets2_temp', []);
+
+  // accumulate newTweets and trigger event
+  // Tracker.autorun(function(computation) {
+  //   if(Session.get('newTweets').length > 5) {
+      
+  //     alert("more than 5 newTweets");
+  //     console.dir(Session.get('newTweets'));
+
+  //     Session.set('newTweets', []);
+  //   }
+  // });
+
+  setInterval(Meteor.bindEnvironment(
+    function(){
+      
+      var newTweets1 = Session.get('newTweets1_temp');
+      Session.set('newTweets1_count', newTweets1.length);
+
+      if(newTweets1.length > 0){
+        Session.set('newTweets1', newTweets1[0]);
+        Session.set('newTweets1_temp', []);
+      }
+
+      var newTweets2 = Session.get('newTweets2_temp');
+      Session.set('newTweets2_count', newTweets2.length);
+
+      if(newTweets2.length > 0){
+        Session.set('newTweets2', newTweets2[0]);
+        Session.set('newTweets2_temp', []);
+      }
+
+    },
+    function(e){
+      console.log("newTweets bind failure")
+    }
+  ),5000);
+
+  // watch for changes to db
+  Meteor.autosubscribe(function() {
+    _db_tweets_1.find().observe({
+      added: function(item) {
+        console.log(item);
+        var newTweets = Session.get('newTweets1_temp');
+        newTweets.push(item);
+        Session.set('newTweets1_temp', newTweets);
+      }
+    });
+    _db_tweets_2.find().observe({
+      added: function(item) {
+        console.log(item);
+        var newTweets = Session.get('newTweets2_temp');
+        newTweets.push(item);
+        Session.set('newTweets2_temp', newTweets);
+      }
+    });
+  });
+
+}

@@ -2,11 +2,8 @@ if (Meteor.isServer) {
   var _db_tweets_1 = Meteor._db_tweets_1;
   var _db_tweets_2 = Meteor._db_tweets_2;
 
-  var topic_1 = 'banana';
-  var topic_2 = 'apple';
-
-  Meteor.topic_1 = topic_1;
-  Meteor.topic_2 = topic_2;
+  var topic_1 = 'mac';
+  var topic_2 = 'windows';
   
   // only expose subset of db
   Meteor.publish("tweets_1", function () {
@@ -16,6 +13,7 @@ if (Meteor.isServer) {
   Meteor.publish("tweets_2", function () {
     return _db_tweets_2.find();
   });
+
 
   Meteor.startup(function () {
   });
@@ -60,6 +58,7 @@ if (Meteor.isServer) {
         console.log('twitterget 1 bind failure');
       }
     ));
+
   },
   function(e){
     console.log('setInterval 1 bind failure');
@@ -103,6 +102,7 @@ if (Meteor.isServer) {
           console.log('twitterget 2 bind failure');
         }
       ));
+        console.log("2 called " + Date.now());
     },
     function(e){
       console.log('setInterval 2 bind failure');
