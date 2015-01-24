@@ -2,8 +2,8 @@ if (Meteor.isServer) {
   var _db_tweets_1 = Meteor._db_tweets_1;
   var _db_tweets_2 = Meteor._db_tweets_2;
 
-  var topic_1 = 'banana';
-  var topic_2 = 'apple';
+  var topic_1 = 'mac';
+  var topic_2 = 'windows';
   
   // only expose subset of db
   Meteor.publish("tweets_1", function () {

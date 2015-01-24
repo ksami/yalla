@@ -77,8 +77,8 @@ if(Meteor.isClient) {
   Meteor.subscribe("tweets_1");
   Meteor.subscribe("tweets_2");
 
-  var topic_1 = 'banana';
-  var topic_2 = 'apple';
+  var topic_1 = 'mac';
+  var topic_2 = 'windows';
 
   Template.gameTemplate.helpers({
     tweetCounts1 : function() {
