@@ -71,4 +71,30 @@
 //     passwordSignupFields: "USERNAME_ONLY"
 //   });
 // }
+if(Meteor.isClient) {
+  var _db_tweets_1 = Meteor._db_tweets_1;
+  var _db_tweets_2 = Meteor._db_tweets_2;
+  Meteor.subscribe("tweets_1");
+  Meteor.subscribe("tweets_2");
 
+  Template.gameTemplate1.helpers({
+    tweetCounts : function() {
+      return _db_tweets_1.find().count();
+    }, 
+    topicName : function() {
+      return Meteor.topic_1;
+    }
+  });
+
+  Template.gameTemplate2.helpers({
+    tweetCounts : function() {
+      return _db_tweets_2.find().count();
+    },
+
+    topicName : function() {
+      return Meteor.topic_2;
+    }
+
+  });
+
+}

@@ -1,38 +1,37 @@
-<head>
-  <title>yalla - The twitter fight</title>
-  <link rel="icon" href="/image/icon.png" type="image/png" />
-</head>
-<body>
+<html>
 
-<div class="backdrop" id="metro">
-  <div class="platform">
-    <div class="game1">
-      {{> gameTemplate1}}
+  <head>
+    <title>yalla - The twitter fight</title>
+    <link rel="icon" href="/image/icon.png" type="image/png" />
+  </head>
+
+  <body>
+    <div class="backdrop" id="metro">
+      <div class="platform">
+        <div class="player left"></div>
+        <div class="player right flip"></div>
+      </div>
     </div>
-    <div class="player left"></div>
-    <div class="game2">
-      {{> gameTemplate2}}
+  </body>
+
+  <template name="gameTemplate1">
+    <!-- gauge for health tweet bar -->
+    <div class="gauge">
+      <h1>{{tweetCounts}}</h1>
     </div>
-    <div class="player right flip"></div>
-  </div>
-</div>
+    <div class="topic">
+      <h1>{{topicName}}</h1>
+    </div>
+  </template>
 
-<template name="gameTemplate1">
-  <!-- gauge for health tweet bar -->
-  <div class="gauge">
-    <h1>{{tweetCounts}}</h1>
-  </div>
-  <div class="topic">
-    <h1>{{topicName}}</h1>
-  </div>
-</template>
+  <template name="gameTemplate2">
+    <!-- gauge for health tweet bar -->
+    <div class="gauge">
+      <h1>{{tweetCounts}}</h1>
+    </div>
+    <div class="topic">
+      <h1>{{topicName}}</h1>
+    </div>
+  </template>
 
-<template name="gameTemplate2">
-  <!-- gauge for health tweet bar -->
-  <div class="gauge">
-    <h1>{{tweetCounts}}</h1>
-  </div>
-  <div class="topic">
-    <h1>{{topicName}}</h1>
-  </div>
-</template>
+</html>
