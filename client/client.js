@@ -2,6 +2,8 @@ if (Meteor.isClient) {
   // accept the subset of db
   Meteor.subscribe("tasks");
 
+  var _db_tasks = Meteor._db_tasks;
+
   // Helpers define variables/data rendered in html
   Template.body.helpers({
     tasks: function () {
