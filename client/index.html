@@ -1,37 +1,30 @@
-<html>
+<head>
+  <title>yalla - The twitter fight</title>
+  <link rel="icon" href="/image/icon.png" type="image/png" />
+</head>
 
-  <head>
-    <title>yalla - The twitter fight</title>
-    <link rel="icon" href="/image/icon.png" type="image/png" />
-  </head>
+<body>
+  <div class="backdrop" id="metro">
+    <div class="platform">
+      <div class="player left"></div>
+      <div class="player right flip"></div>
+    </div>
+  </div>
+  <div class="gauge" id="gauge1">
+    <h1>{{tweetCounts1}}</h1>
+  </div>
+  <div class="gauge" id="gauge2">
+    <h1>{{tweetCounts2}}</h1>
+  </div>
+  <div class="topic" id="topic1">
+    <h1>{{topicName1}}</h1>
+  </div>
+  <div class="topic" id="topic2">
+    <h1>{{topicName2}}</h1>
+  </div>
+</body>
 
-  <body>
-    <div class="backdrop" id="metro">
-      <div class="platform">
-        <div class="player left"></div>
-        <div class="player right flip"></div>
-      </div>
-    </div>
-  </body>
-
-  <template name="gameTemplate1">
-    <!-- gauge for health tweet bar -->
-    <div class="gauge">
-      <h1>{{tweetCounts}}</h1>
-    </div>
-    <div class="topic">
-      <h1>{{topicName}}</h1>
-    </div>
-  </template>
-
-  <template name="gameTemplate2">
-    <!-- gauge for health tweet bar -->
-    <div class="gauge">
-      <h1>{{tweetCounts}}</h1>
-    </div>
-    <div class="topic">
-      <h1>{{topicName}}</h1>
-    </div>
-  </template>
-
-</html>
+<template name="gameTemplate">
+  <!-- gauge for health tweet bar -->
+  
+</template>
