@@ -3,21 +3,19 @@
   <link rel="icon" href="/image/icon.png" type="image/png" />
 </head>
 <body>
-  <div class="backdrop" id="metro">
-    <div class="platform">
-      <div class="player left"></div>
-      <div class="player right flip"></div>
-    </div>
-  </div>
-  <div class="container">
-    <div id="oponent1">
+
+<div class="backdrop" id="metro">
+  <div class="platform">
+    <div class="game1">
       {{> gameTemplate1}}
     </div>
-    <div id="oponent2">
+    <div class="player left"></div>
+    <div class="game2">
       {{> gameTemplate2}}
     </div>
+    <div class="player right flip"></div>
   </div>
-</body>
+</div>
 
 <template name="gameTemplate1">
   <!-- gauge for health tweet bar -->
@@ -26,9 +24,6 @@
   </div>
   <div class="topic">
     <h1>{{topicName}}</h1>
-  </div>
-  <!-- character -->
-  <div class="character">
   </div>
 </template>
 
@@ -39,8 +34,5 @@
   </div>
   <div class="topic">
     <h1>{{topicName}}</h1>
-  </div>
-  <!-- character -->
-  <div class="character">
   </div>
 </template>
