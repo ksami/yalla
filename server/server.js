@@ -16,15 +16,22 @@ if (Meteor.isServer) {
 
   var twitter = new TwitMaker(Meteor.__keys);
 
+  // async callbacks to be wrapped in Meteor.bindEnvironment()
   twitter.get('search/tweets', { q: 'banana since:2011-11-11', count: 3 }, Meteor.bindEnvironment(
     function(err, data, response) {
       console.log(data);
-      _db_tasks.insert({
-        text: data.statuses[0].text,
-        createdAt: data.statuses[0].created_at,
-        owner: data.statuses[0].user.name,
-        username: data.statuses[0].user.screen_name
-      });
+
+      for (var i = data.statuses.length - 1; i >= 0; i--) {
+        var status = data.statuses[i];
+
+        _db_tasks.insert({
+          text: status.text,
+          createdAt: status.created_at,
+          owner: status.user.name,
+          username: status.user.screen_name
+        });
+      };
+      
     },
     function(e) {
       console.log('bind failure');
