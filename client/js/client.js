@@ -1,3 +1,68 @@
+if(Meteor.isClient) {
+	Meteor.startup(function () {
+
+		var $player_1 = $('#player_1');
+		var $player_2 = $('#player_2');
+
+		var $player_1_pos;
+		var $player_2_pos;
+		var platform_x = $('.platform').offset().left;
+		
+		var getPosition = setInterval( function () {
+
+			$player_1_pos = $player_1.offset().left - platform_x;
+			$player_2_pos = $player_2.offset().left - platform_x;
+			//console.log('player 1: ' + $player_1_pos);
+			//console.log('player 2: ' + $player_2_pos);
+		
+		}, 100);
+
+		var kick = function (elem) {
+			elem.addClass('kick');
+			setTimeout( function () {
+					elem.removeClass('kick');
+			}, 500);
+		}
+
+		var punch = function (elem) {
+			elem.addClass('punch');
+			setTimeout( function () {
+				elem.removeClass('punch');
+			}, 500);
+		}
+
+		var hadouken = function (elem) {
+			elem.addClass('hadouken');
+			setTimeout( function () {
+				elem.removeClass('hadouken');
+			}, 500);
+		}
+
+		var reverseKick = function (elem) {
+			elem.addClass('reverse-kick');
+			setTimeout( function() {
+				elem.removeClass('reverse-kick');
+			}, 500);
+		}
+
+		var walk = function (elem) {
+			elem.addClass('walk');
+			setTimeout (function() {
+				elem.removeClass('walk');
+			}, 500);
+		}
+
+		$('button').on('click', function () {
+			kick(player_1);
+			punch(player_1);
+			hadouken(player_1);
+			reverseKick(player_1);
+			walk(player_1);
+		});
+
+	});
+}
+
 // if (Meteor.isClient) {
 //   // accept the subset of db
 //   Meteor.subscribe("tasks");

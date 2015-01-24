@@ -3,20 +3,22 @@
   <link rel="icon" href="/image/icon.png" type="image/png" />
 </head>
 <body>
-  <div class="backdrop" id="metro">
+  <button>debug</button>
+  <div class="backdrop">
     <div class="platform">
-      <div class="player left"></div>
-      <div class="player right flip"></div>
+      <div id="player_1" class="player left idle item"></div>
+      <!-- <div class="projectile item"></div> -->
+      <div id="player_2" class="player right flip idle item"></div>
     </div>
   </div>
-  <div class="container">
+<!--   <div class="container">
     <div id="oponent1">
       {{> gameTemplate1}}
     </div>
     <div id="oponent2">
       {{> gameTemplate2}}
     </div>
-  </div>
+  </div> -->
 </body>
 
 <template name="gameTemplate1">
