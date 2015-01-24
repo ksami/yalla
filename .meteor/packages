@@ -8,3 +8,7 @@ meteor-platform
 accounts-ui
 accounts-password
 mrt:twit
+meteorhacks:npm
+
+
+npm-container
