@@ -12,36 +12,38 @@ if (Meteor.isServer) {
   });
   Meteor.startup(function () {
     // code to run on server at startup
-    var speak = Meteor.npmRequire('speakeasy-nlp');
-    var r1 = speak.sentiment.analyze("cats are dumb");
-    console.log("-- Sentiment --");
-    console.log(r1);
   });
 
 
 
-  // var twitter = new TwitMaker(Meteor.__keys);
+  var twitter = new TwitMaker(Meteor.__keys);
+  var speakeasy = Meteor.npmRequire('speakeasy-nlp');
 
-  // // async callbacks to be wrapped in Meteor.bindEnvironment()
-  // twitter.get('search/tweets', { q: 'banana since:2011-11-11', count: 3 }, Meteor.bindEnvironment(
-  //   function(err, data, response) {
-  //     console.log(data);
+  // async callbacks to be wrapped in Meteor.bindEnvironment()
+  twitter.get('search/tweets', { q: 'snsd since:2011-11-11 lang:en', count: 3 }, Meteor.bindEnvironment(
+    function(err, data, response) {
+      console.log(data);
 
-  //     for (var i = data.statuses.length - 1; i >= 0; i--) {
-  //       var status = data.statuses[i];
+      for (var i = data.statuses.length - 1; i >= 0; i--) {
+        var status = data.statuses[i];
 
-  //       _db_tasks.insert({
-  //         text: status.text,
-  //         createdAt: status.created_at,
-  //         owner: status.user.name,
-  //         username: status.user.screen_name
-  //       });
-  //     };
+        var sentiment = speakeasy.sentiment.analyze(status.text);
+        console.log("-- Sentiment --");
+        console.log(sentiment);
+
+        _db_tasks.insert({
+          text: status.text,
+          sentiment: sentiment.score,
+          createdAt: status.created_at,
+          owner: status.user.name,
+          username: status.user.screen_name
+        });
+      };
       
-  //   },
-  //   function(e) {
-  //     console.log('bind failure');
-  //   }
-  // ));
+    },
+    function(e) {
+      console.log('bind failure');
+    }
+  ));
 
 }
