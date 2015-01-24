@@ -1,8 +1,9 @@
 <head>
-  <title>lolwut</title>
+  <title>yalla - The twitter fight</title>
+  <link rel="icon" href="image/icon.png" type="image/png" />
 </head>
 
-<body>
+<!-- <body>
   <div class="container">
     <header>
       <h1>Todo List ({{incompleteCount}})</h1>
@@ -50,3 +51,43 @@
     <span class="text"><strong>{{username}}</strong> - {{text}}</span>
   </li>
 </template>
+ -->
+
+<body>
+  <div class="container">
+    <div id="oponent1">
+      {{> gameTemplate1}}
+    </div>
+    <div id="oponent2">
+      {{> gameTemplate2}}
+    </div>
+  </div>
+
+  <template name="gameTemplate1">
+    <! gauge for health tweet bar !>
+    <div class="gauge">
+      <h1>{{tweetCounts}}
+    </div>
+    <div class="topic">
+      <h1>{{topic}}</h1>
+    </div>
+    <! character !>
+    <div class="character">
+    </div>
+  </template>
+
+  <template name="gameTemplate2">
+    <! gauge for health tweet bar !>
+    <div class="gauge">
+      <h1>{{tweetCounts}}
+    </div>
+    <div class="topic">
+      <h1>{{topic}}</h1>
+    </div>
+    <! character !>
+    <div class="character">
+    </div>
+  </template>
+
+
+</body>
