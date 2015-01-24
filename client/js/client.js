@@ -77,24 +77,22 @@ if(Meteor.isClient) {
   Meteor.subscribe("tweets_1");
   Meteor.subscribe("tweets_2");
 
-  Template.gameTemplate1.helpers({
-    tweetCounts : function() {
+  var topic_1 = 'banana';
+  var topic_2 = 'apple';
+
+  Template.gameTemplate.helpers({
+    tweetCounts1 : function() {
       return _db_tweets_1.find().count();
     }, 
-    topicName : function() {
-      return Meteor.topic_1;
-    }
-  });
-
-  Template.gameTemplate2.helpers({
-    tweetCounts : function() {
-      return _db_tweets_2.find().count();
+    topicName1 : function() {
+      return topic_1;
     },
-
-    topicName : function() {
-      return Meteor.topic_2;
+    tweetCounts2 : function() {
+      return _db_tweets_2.find().count();
+    }, 
+    topicName2 : function() {
+      return topic_2;
     }
-
   });
 
 }

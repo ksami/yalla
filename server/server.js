@@ -4,9 +4,6 @@ if (Meteor.isServer) {
 
   var topic_1 = 'banana';
   var topic_2 = 'apple';
-
-  Meteor.topic_1 = topic_1;
-  Meteor.topic_2 = topic_2;
   
   // only expose subset of db
   Meteor.publish("tweets_1", function () {
@@ -16,6 +13,7 @@ if (Meteor.isServer) {
   Meteor.publish("tweets_2", function () {
     return _db_tweets_2.find();
   });
+
 
   Meteor.startup(function () {
   });
