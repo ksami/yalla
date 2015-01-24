@@ -14,6 +14,7 @@ if (Meteor.isServer) {
   });
   
   var twitter = new TwitMaker(Meteor.__keys);
+  var speakeasy = Meteor.npmRequire('speakeasy-nlp');
 
   setInterval(Meteor.bindEnvironment(function(){
     twitter.get('search/tweets', { q: 'snsd since:2011-11-11 lang:en', count: 20 }, Meteor.bindEnvironment(
