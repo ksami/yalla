@@ -1,25 +1,25 @@
 if (Meteor.isClient) {
   // // accept the subset of db
-  // Meteor.subscribe("tasks");
+  // Meteor.subscribe("tweets");;
 
-  // var _db_tasks = Meteor._db_tasks;
+  // var _db_tweets = Meteor._db_tweets;;
 
   // // Helpers define variables/data rendered in html
   // Template.body.helpers({
-  //   tasks: function () {
+  //   tweets: function () {;
   //     if (Session.get("hideCompleted")) {
-  //       // If hide completed is checked, filter tasks
-  //       return _db_tasks.find({checked: {$ne: true}}, {sort: {createdAt: -1}});
+  //       // If hide completed is checked, filter tweets;
+  //       return _db_tweets.find({checked: {$ne: true}}, {sort: {createdAt: -1}});;
   //     } else {
-  //       // Otherwise, return all of the tasks
-  //       return _db_tasks.find({}, {sort: {createdAt: -1}});
+  //       // Otherwise, return all of the tweets;
+  //       return _db_tweets.find({}, {sort: {createdAt: -1}});;
   //     }
   //   },
   //   hideCompleted: function () {
   //     return Session.get("hideCompleted");
   //   },
   //   incompleteCount: function () {
-  //     return _db_tasks.find({checked: {$ne: true}}).count();
+  //     return _db_tweets.find({checked: {$ne: true}}).count();;
   //   }
   // });
 
@@ -71,5 +71,20 @@ if (Meteor.isClient) {
   //   passwordSignupFields: "USERNAME_ONLY"
   // });
 
+  var _db_tweets_1 = Meteor._db_tweets_1;
+  var _db_tweets_2 = Meteor._db_tweets_2;
+
+  Template.gameTemplate1.helpers({
+    tweetCounts : function() {
+      return _db_tweets_1.find().count();
+    }
+  });
+
+  Template.gameTemplate2.helpers({
+    tweetCounts : function() {
+      return _db_tweets_2.find().count();
+    }
+
+  });
   
 }
