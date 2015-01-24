@@ -14,6 +14,7 @@ if (Meteor.isServer) {
   });
   
   setInterval(Meteor.bindEnvironment(function(){
+    var twitter = new TwitMaker(Meteor.__keys);
     twitter.get('search/tweets', { q: 'snsd since:2011-11-11 lang:en', count: 20 }, Meteor.bindEnvironment(
       function(err, data, response) {
         console.log(data);
@@ -42,7 +43,7 @@ if (Meteor.isServer) {
             });
           }
 
-        };
+        }
         
       },
       function(e) {
