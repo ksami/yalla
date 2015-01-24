@@ -15,7 +15,6 @@ if (Meteor.isServer) {
   });
 
 
-
   var twitter = new TwitMaker(Meteor.__keys);
   var speakeasy = Meteor.npmRequire('speakeasy-nlp');
 
