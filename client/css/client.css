@@ -1,3 +1,17 @@
+.tweet-sentiment{
+  float: left;
+  margin-right: 10px;
+}
+.green_text {
+  color: #03c03c;
+}
+.red_text {
+  color: red;
+}
+.tweet-tweet{
+  color: black;
+}
+
 html, body {
   margin: 0;
    background: url('congruent_pentagon.png') repeat;
@@ -72,6 +86,61 @@ html, body {
 
 #player_2_gauge .photo {
 	right: -110px;
+}
+
+.container {
+	width:100%;
+	position: relative;
+}
+
+
+#player1-tweet {
+	float: left;
+	width: 43%;
+	height: 400px;
+	margin-left:20px;
+	background-color: rgba(255,255,255,0.7);
+	padding: 20px;
+	padding-top:0px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom:10px;
+	border: 2px solid white;
+    border-radius: 25px;
+}
+
+.tweet-box{
+	background-color: #3498db;
+	width: 100%;
+	margin: 0px;
+	color: white;
+}
+
+#player2-tweet {
+	float: right;
+	width: 43%;
+	height: 400px;
+	margin-right:20px;
+	background-color: rgba(255,255,255,0.7);
+	padding: 20px;
+	padding-top:0px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom:10px;
+	border: 2px solid white;
+    border-radius: 25px;
+}
+
+.tweet-box h3 {
+	text-align: center;
+}
+
+.container ul {
+   list-style-type: none;
+}
+
+.container ul li {
+   margin-bottom: 5px;
 }
 
 .photo img {
@@ -398,4 +467,3 @@ html, body {
 	-ms-transform: scaleX(-1);
 	transform: scaleX(-1);
 }
-

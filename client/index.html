@@ -15,7 +15,7 @@
         <div class="bar">
           <div class="health green"></div>
         </div>
-        <p class="name">Windows</p>
+        <p class="name">{{topicName1}}</p>
       </div>
       <div class="player-stats" id="player_2_gauge">
         <div class="bar">
@@ -24,7 +24,7 @@
         <div class="photo">
           <img src="mac.png">
         </div>
-        <p class="name">Mac</p>
+        <p class="name">{{topicName2}}</p>
       </div>
     </div>
   </div>
@@ -36,24 +36,52 @@
     </div>
     <!-- <div class="bottom"></div> -->
   </div>
-  <!-- {{> gameTemplate}} -->
+  {{> gameTemplate}}
 </body>
 
 <template name="gameTemplate">
-  <div class="gauge" id="gauge1">
-    <h1>{{tweetCounts1}}</h1>
+
+  <div class="container">
+    <div id="player1-tweet">
+      <div class="tweet-box">
+          <h3>{{topicName1}} tweets: {{newTweets1_count}}</h3>
+      </div>
+      <p>
+        <ul>
+        {{#each newTweets1}}
+          {{> tweet}}
+        {{/each}}
+        </ul>
+      </p>
+    </div>
+
+    <div id="player2-tweet">
+      <div class="tweet-box">
+        <h3>{{topicName2}} tweets: {{newTweets2_count}}</h3>
+      </div>
+      <p>
+        <ul>
+        {{#each newTweets2}}
+          {{> tweet}}
+        {{/each}}
+        </ul>
+      </p>
+    </div>
+
   </div>
-  <div class="gauge" id="gauge2">
-    <h1>{{tweetCounts2}}</h1>
-  </div>
-  <div class="topic" id="topic1">
-    <h1>{{topicName1}}</h1>
-  </div>
-  <div class="topic" id="topic2">
-    <h1>{{topicName2}}</h1>
-  </div>
-  <p>newTweets1: {{newTweets1}}</p>
-  <p>newTweets2: {{newTweets2}}</p>
-  <p>newTweets1_count: {{newTweets1_count}}</p>
-  <p>newTweets2_count: {{newTweets2_count}}</p>
+
+</template>
+
+<template name="tweet">
+  <li class="tweet">
+    <div class="tweet-sentiment 
+      {{#if sentiment_positive}}green_text{{else}}red_text{{/if}}">
+      {{sentiment}}
+    </div>
+    <div class="tweet-tweet">
+      {{text}}
+      <br />
+      - {{owner}} (@{{username}}) at {{createdAt}}
+    </div>
+  </li>
 </template>
