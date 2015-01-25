@@ -152,22 +152,34 @@ if(Meteor.isClient) {
   Meteor.subscribe("tweets_1");
   Meteor.subscribe("tweets_2");
 
-  var topic_1 = 'mac';
-  var topic_2 = 'windows';
+  var topic_1 = 'Android';
+  var topic_2 = 'iOS';
+
+  Template.body.helpers({
+    topicName1 : function() {
+      return topic_1;
+    },
+    topicName2 : function() {
+      return topic_2;
+    },
+  });
 
   Template.gameTemplate.helpers({
     tweetCounts1 : function() {
       return _db_tweets_1.find().count();
     }, 
-    topicName1 : function() {
-      return topic_1;
-    },
+    
     tweetCounts2 : function() {
       return _db_tweets_2.find().count();
     }, 
+
+    topicName1 : function() {
+      return topic_1;
+    },
     topicName2 : function() {
       return topic_2;
     },
+    
     newTweets1: function(){
       var tweet = Session.get('newTweets1');
       console.dir(tweet);

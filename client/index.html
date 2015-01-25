@@ -15,7 +15,7 @@
         <div class="bar">
           <div class="health green"></div>
         </div>
-        <p class="name">Windows</p>
+        <p class="name">{{topicName1}}</p>
       </div>
       <div class="player-stats" id="player_2_gauge">
         <div class="bar">
@@ -24,7 +24,7 @@
         <div class="photo">
           <img src="mac.png">
         </div>
-        <p class="name">Mac</p>
+        <p class="name">{{topicName2}}</p>
       </div>
     </div>
   </div>
@@ -40,36 +40,35 @@
 </body>
 
 <template name="gameTemplate">
-  <div class="gauge" id="gauge1">
-    <h1>{{tweetCounts1}}</h1>
-  </div>
-  <div class="gauge" id="gauge2">
-    <h1>{{tweetCounts2}}</h1>
-  </div>
-  <div class="topic" id="topic1">
-    <h1>{{topicName1}}</h1>
-  </div>
-  <div class="topic" id="topic2">
-    <h1>{{topicName2}}</h1>
-  </div>
 
-  <p>
-    newTweets1: {{newTweets1_count}}
-    <ul>
-    {{#each newTweets1}}
-      {{> tweet}}
-    {{/each}}
-    </ul>
-  </p>
+  <div class="container">
+    <div id="player1-tweet">
+      <div class="tweet-box">
+          <h3>{{topicName1}} tweets: {{newTweets1_count}}</h3>
+      </div>
+      <p>
+        <ul>
+        {{#each newTweets1}}
+          {{> tweet}}
+        {{/each}}
+        </ul>
+      </p>
+    </div>
 
-  <p>
-    newTweets2: {{newTweets2_count}}
-    <ul>
-    {{#each newTweets2}}
-      {{> tweet}}
-    {{/each}}
-    </ul>
-  </p>
+    <div id="player2-tweet">
+      <div class="tweet-box">
+        <h3>{{topicName2}} tweets: {{newTweets2_count}}</h3>
+      </div>
+      <p>
+        <ul>
+        {{#each newTweets2}}
+          {{> tweet}}
+        {{/each}}
+        </ul>
+      </p>
+    </div>
+
+  </div>
 
 </template>
 
