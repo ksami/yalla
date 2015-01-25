@@ -168,10 +168,22 @@ if(Meteor.isClient) {
     topicName2 : function() {
       return topic_2;
     },
-    newTweets1: function(){ return Session.get('newTweets1'); },
-    newTweets2: function(){ return Session.get('newTweets2'); },
-    newTweets1_count: function(){ return Session.get('newTweets1_count'); },
-    newTweets2_count: function(){ return Session.get('newTweets2_count'); }
+    newTweets1: function(){
+      var tweet = Session.get('newTweets1');
+      console.dir(tweet);
+      return tweet;
+    },
+    newTweets2: function(){
+      var tweet = Session.get('newTweets2');
+      console.dir(tweet);
+      return tweet;
+    },
+    newTweets1_count: function(){
+      return Session.get('newTweets1_count');
+    },
+    newTweets2_count: function(){
+      return Session.get('newTweets2_count');
+    }
   });
 
 
@@ -196,16 +208,32 @@ if(Meteor.isClient) {
       var newTweets1 = Session.get('newTweets1_temp');
       Session.set('newTweets1_count', newTweets1.length);
 
-      if(newTweets1.length > 0){
-        Session.set('newTweets1', newTweets1[0]);
+      if(newTweets1.length < 5){
+        Session.set('newTweets1', newTweets1);
+        Session.set('newTweets1_temp', []);
+      }
+      else{
+        var temp = [];
+        for (var i = 4; i >= 0; i--) {
+          temp.push(newTweets1[i]);
+        };
+        Session.set('newTweets1', temp);
         Session.set('newTweets1_temp', []);
       }
 
       var newTweets2 = Session.get('newTweets2_temp');
       Session.set('newTweets2_count', newTweets2.length);
 
-      if(newTweets2.length > 0){
-        Session.set('newTweets2', newTweets2[0]);
+      if(newTweets2.length < 5){
+        Session.set('newTweets2', newTweets2);
+        Session.set('newTweets2_temp', []);
+      }
+      else{
+        var temp = [];
+        for (var i = 4; i >= 0; i--) {
+          temp.push(newTweets2[i]);
+        };
+        Session.set('newTweets2', temp);
         Session.set('newTweets2_temp', []);
       }
 
@@ -219,7 +247,7 @@ if(Meteor.isClient) {
   Meteor.autosubscribe(function() {
     _db_tweets_1.find().observe({
       added: function(item) {
-        console.log(item);
+        //console.log(item);
         var newTweets = Session.get('newTweets1_temp');
         newTweets.push(item);
         Session.set('newTweets1_temp', newTweets);
@@ -227,7 +255,7 @@ if(Meteor.isClient) {
     });
     _db_tweets_2.find().observe({
       added: function(item) {
-        console.log(item);
+        //console.log(item);
         var newTweets = Session.get('newTweets2_temp');
         newTweets.push(item);
         Session.set('newTweets2_temp', newTweets);

@@ -41,14 +41,22 @@ if (Meteor.isServer) {
             console.log("-- Sentiment --");
             console.log(sentiment);
 
+            var sent = sentiment.comparative;
+            sent = sent.toFixed(2);
+            var sentiment_pos = 1;
+            if(sent < 0)
+              sentiment_pos = 0;
+
             _db_tweets_1.insert({
               id: status.id_str,
               text: status.text,
-              sentiment: sentiment.score,
+              sentiment: sent,
+              sentiment_positive : sentiment_pos,
               createdAt: status.created_at,
               owner: status.user.name,
               username: status.user.screen_name
             });
+
           }
 
         }
@@ -85,10 +93,17 @@ if (Meteor.isServer) {
               console.log("-- Sentiment --");
               console.log(sentiment);
 
+              var sent = sentiment.comparative;
+              sent = sent.toFixed(2);
+              var sentiment_pos = 1;
+              if(sent < 0)
+                sentiment_pos = 0;
+
               _db_tweets_2.insert({
                 id: status.id_str,
                 text: status.text,
-                sentiment: sentiment.score,
+                sentiment: sent,
+                sentiment_positive : sentiment_pos,
                 createdAt: status.created_at,
                 owner: status.user.name,
                 username: status.user.screen_name

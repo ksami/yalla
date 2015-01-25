@@ -36,7 +36,7 @@
     </div>
     <!-- <div class="bottom"></div> -->
   </div>
-  <!-- {{> gameTemplate}} -->
+  {{> gameTemplate}}
 </body>
 
 <template name="gameTemplate">
@@ -52,8 +52,37 @@
   <div class="topic" id="topic2">
     <h1>{{topicName2}}</h1>
   </div>
-  <p>newTweets1: {{newTweets1}}</p>
-  <p>newTweets2: {{newTweets2}}</p>
-  <p>newTweets1_count: {{newTweets1_count}}</p>
-  <p>newTweets2_count: {{newTweets2_count}}</p>
+
+  <p>
+    newTweets1: {{newTweets1_count}}
+    <ul>
+    {{#each newTweets1}}
+      {{> tweet}}
+    {{/each}}
+    </ul>
+  </p>
+
+  <p>
+    newTweets2: {{newTweets2_count}}
+    <ul>
+    {{#each newTweets2}}
+      {{> tweet}}
+    {{/each}}
+    </ul>
+  </p>
+
+</template>
+
+<template name="tweet">
+  <li class="tweet">
+    <div class="tweet-sentiment 
+      {{#if sentiment_positive}}green_text{{else}}red_text{{/if}}">
+      {{sentiment}}
+    </div>
+    <div class="tweet-tweet">
+      {{text}}
+      <br />
+      - {{owner}} (@{{username}}) at {{createdAt}}
+    </div>
+  </li>
 </template>
