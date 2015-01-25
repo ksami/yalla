@@ -6,68 +6,139 @@ if(Meteor.isClient) {
 
 		var $player_1_pos;
 		var $player_2_pos;
-		var platform_x = $('.platform').offset().left;
-		
+
+		var platform_x = $('.platform').offset().left;		
 		var getPosition = setInterval( function () {
 
 			$player_1_pos = $player_1.offset().left - platform_x;
 			$player_2_pos = $player_2.offset().left - platform_x;
-			//console.log('player 1: ' + $player_1_pos);
-			//console.log('player 2: ' + $player_2_pos);
-		
-		}, 100);
+
+		}, 50);
+
+		var initial_pos = 300; // 300px from left for player 1 and right for player 2
 
 		var collision = function () {
 			return ( $player_1_pos + 175 >= $player_2_pos && $player_1_pos + 175 <= $player_2_pos + 175 );
 		}
 
-		setInterval( function () {
-			if(collision()) {
-				console.log('collides');
-			}
-		}, 1000);
-
 		var kick = function (elem) {
+			var deferred = $.Deferred();
 			elem.addClass('kick');
 			setTimeout( function () {
 					elem.removeClass('kick');
+					deferred.resolve();
 			}, 500);
+			return deferred.promise();
 		}
 
 		var punch = function (elem) {
+			var deferred = $.Deferred();
 			elem.addClass('punch');
 			setTimeout( function () {
 				elem.removeClass('punch');
-			}, 500);
+				deferred.resolve();
+			}, 10000);
+			return deferred.promise();
 		}
 
-		var hadouken = function (elem) {
-			elem.addClass('hadouken');
-			setTimeout( function () {
-				elem.removeClass('hadouken');
-			}, 500);
-		}
+		// var hadouken = function (elem) {
+		// 	var deferred = $.Deferred();
+		// 	elem.addClass('hadouken');
+		// 	if(collision()) {
+		// 		damageOponent();
+		// 	}
+		// 	setTimeout( function () {
+		// 		elem.removeClass('hadouken');
+		// 	}, 500);
+		// }
 
 		var reverseKick = function (elem) {
+			var deferred = $.Deferred();
 			elem.addClass('reverse-kick');
 			setTimeout( function() {
 				elem.removeClass('reverse-kick');
+				deferred.resolve();
 			}, 500);
+			return deferred.promise();
 		}
 
-		var walk = function (elem) {
-			elem.addClass('walk');
-			setTimeout (function() {
-				elem.removeClass('walk');
-			}, 500);
+		var walkOpposite = function(elem, dir){
+    	var deferred = $.Deferred();
+    	var moveBack = setInterval(function () {
+				if(elem.offset()[dir] <= initial_pos){
+					elem.removeClass('walk');
+					clearInterval(moveBack);
+					deferred.resolve();
+				} else {
+					elem.addClass('walk').css(dir, '-=20px');
+					setTimeout(function () {
+    				elem.removeClass('walk');
+    			}, 500)
+				}
+			}, 100);
+			return deferred.promise();
 		}
+
+		var walkAhead = function (elem, dir) {
+			var deferred = $.Deferred();
+			var walk = setInterval(function () {
+				if(collision()){
+					elem.removeClass('walk');
+					clearInterval(walk);
+					deferred.resolve();
+				} else {
+					elem.addClass('walk').css(dir, '+=20px');
+					setTimeout(function () {
+    				elem.removeClass('walk');
+    			}, 500);
+				}
+			}, 100);
+			return deferred.promise();
+		}
+
+		function walkAndKick (elem) {
+			var dir = (elem == $player_1) ? 'left' : 'right';
+			var walked = walkAhead(elem, dir);
+			var kicked = walked.done(function () {
+				kick(elem);
+			});
+			kicked.done(function () {
+				walkOpposite(elem, dir);
+			});
+		}
+
+		function walkAndReverseKick (elem) {
+			var dir = (elem == $player_1) ? 'left' : 'right';
+			var walked = walkAhead(elem, dir);
+			var rKicked = walked.done(function () {
+				reverseKick(elem);
+			});
+			rKicked.done(function () {
+				walkOpposite(elem, dir);
+			});
+		}
+
+		function walkAndPunch (elem) {
+			var dir = (elem == $player_1) ? 'left' : 'right';
+			var walked = walkAhead(elem, dir);
+			var punched = walked.done(function () {
+				punch(elem);
+			});
+			punched.done(function () {
+				console.log('yah');
+			});
+			// var returned = punched.done(function (){
+			// 	walkOpposite(elem, dir);
+			// });
+			// returned.done(function(){
+			// 	console.log('returned');
+			// });
+		}
+
+
 
 		$('button').on('click', function () {
-			kick($player_1);
-			// punch($player_1);
-			// hadouken($player_1);
-			// reverseKick($player_1);
-			// walk($player_1);
+				walkAndPunch($player_1);
 		});
 
 	});

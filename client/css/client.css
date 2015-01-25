@@ -160,11 +160,11 @@ html, body {
 }
 
 .left {
-	left: 100px;
+	left: 300px;
 }
 
 .right {
-	right: 100px;
+	right: 300px;
 }
 
 /* idle */
@@ -309,28 +309,28 @@ html, body {
 
 /* hadouken */
 .hadouken {
-	-webkit-animation: reverse-kick steps(4) 0.5s infinite;
-	-moz-animation: reverse-kick steps(4) 0.5s infinite;
-	-ms-animation: reverse-kick steps(4) 0.5s infinite; 
-	animation: reverse-kick steps(4) 0.5s infinite;
+	-webkit-animation: hadouken steps(4) 0.5s infinite;
+	-moz-animation: hadouken steps(4) 0.5s infinite;
+	-ms-animation: hadouken steps(4) 0.5s infinite; 
+	animation: hadouken steps(4) 0.5s infinite;
 }
 
-@keyframes reverse-kick {
+@keyframes hadouken {
 	from { background-position: 0px 0px; }
   to { background-position: -700px 0px; }
 }
 
-@-webkit-keyframes reverse-kick { 
+@-webkit-keyframes hadouken { 
 	from { background-position: 0px 0px; }
   to { background-position: -700px 0px; } 
 }
 
-@-moz-keyframes reverse-kick { 
+@-moz-keyframes hadouken { 
 	from { background-position: 0px 0px; }
   to { background-position: -700px 0px; } 
 }
 
-@-ms-keyframes reverse-kick { 
+@-ms-keyframes hadouken { 
 	from { background-position: 0px 0px; }
   to { background-position: -700px 0px; } 
 }
