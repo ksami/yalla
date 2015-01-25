@@ -17,6 +17,16 @@ if(Meteor.isClient) {
 		
 		}, 100);
 
+		var collision = function () {
+			return ( $player_1_pos + 175 >= $player_2_pos && $player_1_pos + 175 <= $player_2_pos + 175 );
+		}
+
+		setInterval( function () {
+			if(collision()) {
+				console.log('collides');
+			}
+		}, 1000);
+
 		var kick = function (elem) {
 			elem.addClass('kick');
 			setTimeout( function () {
@@ -53,11 +63,11 @@ if(Meteor.isClient) {
 		}
 
 		$('button').on('click', function () {
-			kick(player_1);
-			punch(player_1);
-			hadouken(player_1);
-			reverseKick(player_1);
-			walk(player_1);
+			kick($player_1);
+			// punch($player_1);
+			// hadouken($player_1);
+			// reverseKick($player_1);
+			// walk($player_1);
 		});
 
 	});
